@@ -1,0 +1,9 @@
+<div *ngIf="messeagesService.messeages.length">
+  <h2>messages:</h2>
+  <button type="button" (click)="messeagesService.clear()">clear</button>
+  <ul>
+    <li *ngFor="let messeage of messeagesService.messeages">
+      {{messeage}}
+    </li>
+  </ul>
+</div>

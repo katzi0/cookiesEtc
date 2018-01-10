@@ -1,0 +1,10 @@
+<div *ngIf="developer">
+  <h2>{{developer.name | uppercase}} details</h2>
+  <div><span>id: </span>{{developer.id}}</div>
+  <div>
+    <label>name:</label>
+    <input type="text" [(ngModel)]="developer.name" placeholder="name">
+  </div>
+  <h4>location details</h4>
+  <span>{{developer.location |json}}</span>
+</div>

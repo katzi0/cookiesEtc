@@ -1,0 +1,7 @@
+<ul class="developers">
+  <li [class.selected]="developer === selectedDeveloper" *ngFor="let developer of developers" (click)="onSelect(developer)">
+    <span class="badge">{{developer.id}}</span>{{developer.name}}
+  </li>
+</ul>
+<app-developer-detail [developer]="selectedDeveloper"></app-developer-detail>
+
