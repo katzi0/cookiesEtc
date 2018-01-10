@@ -1,6 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
-import {Developer} from "../developr";
-
+import { Developer } from "../developr";
+import { ActivatedRoute } from '@angular/router';
+import { Location } from '@angular/common';
+import { DeveloperService } from '../developer.service';
 
 @Component({
   selector: 'app-developer-detail',
@@ -9,9 +11,23 @@ import {Developer} from "../developr";
 })
 export class DeveloperDetailComponent implements OnInit {
   @Input() developer:Developer;
-  constructor() { }
+  constructor(
+    private route: ActivatedRoute,
+    private developerService: DeveloperService,
+    private location: Location
+  ) { }
 
   ngOnInit() {
+    this.getHero();
+  }
+
+  getHero(){
+    const id = +this.route.snapshot.paramMap.get('id');
+    this.developerService.getDeveloper(id).subscribe(devloper=> this.developer = devloper);
+  }
+
+  goBack(){
+    this.location.back();
   }
 
 }

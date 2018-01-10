@@ -10,17 +10,14 @@ import { MesseagesService } from '../messeages.service';
   // providers: [DeveloperService]
 })
 export class DevelopersComponent implements OnInit {
-developers:Developer[];
-selectedDeveloper:Developer;
+
+  developers:Developer[];
+
   constructor(private developerService:DeveloperService, private messeagesService:MesseagesService) { }
 
   ngOnInit() {
-    this.developerService.getDevelopers().subscribe(developers=> this.developers = developers);
-  }
-
-  onSelect(developer:Developer){
-    this.selectedDeveloper = developer;
-    this.messeagesService.add("developer: " + developer.name + " selected");
+    this.developerService.getDevelopers()
+      .subscribe(developers=> this.developers = developers);
   }
 
 }

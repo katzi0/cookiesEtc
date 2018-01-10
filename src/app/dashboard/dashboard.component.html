@@ -1,6 +1,7 @@
 <h3>Top Developer</h3>
 <div class="grid grid-pad">
-  <a *ngFor="let developer of developers" class="col-1-4">
+  <a *ngFor="let developer of developers" class="col-1-4"
+  routerLink="/detail/{{developer.id}}">
     <div class="module hero">
       <h4>{{developer.name}}</h4>
     </div>

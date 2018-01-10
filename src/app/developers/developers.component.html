@@ -1,7 +1,9 @@
 <ul class="developers">
-  <li [class.selected]="developer === selectedDeveloper" *ngFor="let developer of developers" (click)="onSelect(developer)">
+  <li [class.selected]="developer === selectedDeveloper" *ngFor="let developer of developers">
+    <a routerLink="/detail/{{developer.id}}">
     <span class="badge">{{developer.id}}</span>{{developer.name}}
+    </a>
   </li>
 </ul>
-<app-developer-detail [developer]="selectedDeveloper"></app-developer-detail>
+<!--<app-developer-detail [developer]="selectedDeveloper"></app-developer-detail>-->
 
