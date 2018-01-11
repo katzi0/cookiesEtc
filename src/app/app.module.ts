@@ -14,6 +14,8 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { InMemoryDataService }  from './in-memory-data.service';
+import { DeveloperSearchComponent } from './developer-search/developer-search.component';
+import { HeaderNavComponent } from './header-nav/header-nav.component';
 
 
 
@@ -23,7 +25,9 @@ import { InMemoryDataService }  from './in-memory-data.service';
     DevelopersComponent,
     DeveloperDetailComponent,
     MessagesComponent,
-    DashboardComponent
+    DashboardComponent,
+    DeveloperSearchComponent,
+    HeaderNavComponent
   ],
   imports: [
     BrowserModule,

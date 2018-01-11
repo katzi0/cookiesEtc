@@ -63,7 +63,7 @@ export class DeveloperService {
     if(!(term.trim())){
       return of([]);
     }
-    this.http.get<Developer[]>(`api/heroes/?name=${term}`).pipe(
+    return this.http.get<Developer[]>(`api/heroes/?name=${term}`).pipe(
       tap(_ => this.log(`found develoers matching "${term}"`)),
       catchError(this.handleError<Developer[]>('searchDevelopers', []))
     )
@@ -74,8 +74,6 @@ export class DeveloperService {
     this.messeagesService.add("DeveloperService" + message);
 
   }
-
-
 
   /**
    * Handle Http operation that failed.
