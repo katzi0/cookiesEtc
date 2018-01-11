@@ -20,4 +20,7 @@ export class DashboardComponent implements OnInit {
     this.developerService.getDevelopers()
       .subscribe(developers => this.developers = developers.slice(1, 5));
   }
+  search(term:string){
+    this.developerService.searchDevelopers(term).subscribe(developers => this.developers = developers);
+  }
 }

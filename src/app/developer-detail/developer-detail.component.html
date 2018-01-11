@@ -1,5 +1,6 @@
 <div *ngIf="developer">
   <button type="button" (click)="goBack()">go back</button>
+  <button type="button" (click)="saveDeveloper()">save</button>
   <h2>{{developer.name | uppercase}} details</h2>
   <div><span>id: </span>{{developer.id}}</div>
   <div>

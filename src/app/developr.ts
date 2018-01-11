@@ -1,6 +1,6 @@
 import {OfficeLocation} from './office.location';
 export class Developer {
-  id:number;
+  id?:number;
   name:string;
-  location:OfficeLocation;
+  location?:OfficeLocation;
 }

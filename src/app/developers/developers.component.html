@@ -3,7 +3,14 @@
     <a routerLink="/detail/{{developer.id}}">
     <span class="badge">{{developer.id}}</span>{{developer.name}}
     </a>
+    <button class="delete" title="delete developer"
+            (click)="delete(developer)">x</button>
   </li>
 </ul>
+
+<div>
+  <label>add developer <input #developerName/></label>
+  <button type="button" (click)="add(developerName.value); developerName.value = ''">add new developer</button>
+</div>
 <!--<app-developer-detail [developer]="selectedDeveloper"></app-developer-detail>-->
 

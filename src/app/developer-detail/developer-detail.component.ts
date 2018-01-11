@@ -23,11 +23,15 @@ export class DeveloperDetailComponent implements OnInit {
 
   getHero(){
     const id = +this.route.snapshot.paramMap.get('id');
-    this.developerService.getDeveloper(id).subscribe(devloper=> this.developer = devloper);
+    this.developerService.getDeveloper(id).subscribe(developer=> this.developer = developer);
   }
 
   goBack(){
     this.location.back();
+  }
+
+  saveDeveloper(){
+    this.developerService.updateDeveloper(this.developer).subscribe(() => this.goBack());
   }
 
 }

@@ -19,5 +19,20 @@ export class DevelopersComponent implements OnInit {
     this.developerService.getDevelopers()
       .subscribe(developers=> this.developers = developers);
   }
+  add(developerName:string){
+    developerName = developerName.trim();
+    if(!developerName) { return };
+
+    this.developerService.addDeveloper({ name:developerName } as Developer)
+      .subscribe(developer => {
+        this.developers.push(developer)
+
+      });
+  }
+  delete(developer:Developer){
+    this.developers = this.developers.filter(dev => dev !== developer);
+    this.developerService.deleteDeveloper(developer)
+    .subscribe();
+  }
 
 }

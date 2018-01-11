@@ -7,3 +7,7 @@
     </div>
   </a>
 </div>
+<div>
+  <label>search by hero name:<input #heroName/></label>
+  <button (click)="search(heroName.value);heroName.value = ''">search</button>
+</div>
