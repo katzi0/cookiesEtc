@@ -9,6 +9,21 @@
   width: 15em;
 }
 
+#developers {
+  display:inline-block;
+  border:2px #eee solid;
+  /*background-color: red;*/
+  width:48%;
+  position: absolute;
+  top:10em;
+  left:0px;
+  height:50%;
+  padding: 3px;
+  margin-left:5px;
+}
+
+
+
 .developers li {
   cursor: pointer;
   position: relative;

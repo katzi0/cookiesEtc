@@ -9,7 +9,7 @@ import { DeveloperService } from '../developer.service';
 })
 export class DashboardComponent implements OnInit {
   developers: Developer[] = [];
-
+  planes$
   constructor(private developerService: DeveloperService) { }
 
   ngOnInit() {

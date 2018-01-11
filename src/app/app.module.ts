@@ -16,6 +16,7 @@ import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { InMemoryDataService }  from './in-memory-data.service';
 import { DeveloperSearchComponent } from './developer-search/developer-search.component';
 import { HeaderNavComponent } from './header-nav/header-nav.component';
+import { DeveloperLocationComponent } from './developer-location/developer-location.component';
 
 
 
@@ -27,7 +28,8 @@ import { HeaderNavComponent } from './header-nav/header-nav.component';
     MessagesComponent,
     DashboardComponent,
     DeveloperSearchComponent,
-    HeaderNavComponent
+    HeaderNavComponent,
+    DeveloperLocationComponent
   ],
   imports: [
     BrowserModule,
@@ -36,7 +38,7 @@ import { HeaderNavComponent } from './header-nav/header-nav.component';
     HttpClientInMemoryWebApiModule.forRoot(
       InMemoryDataService, { dataEncapsulation: false }
     ),
-    AppRoutingModule
+    AppRoutingModule,
   ],
   providers: [DeveloperService, MesseagesService],
   bootstrap: [AppComponent]

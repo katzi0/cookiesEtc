@@ -1,7 +1,9 @@
 #header-navbar{
-  height: 10rem;
+  position:absolute;
+  top:0px;
+  height: 9rem;
+  display: block;
+  width:90%;
 }
 
-a {
-  font-size: 1.2rem;
-}
+

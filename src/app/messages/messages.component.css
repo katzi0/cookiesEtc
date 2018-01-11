@@ -33,3 +33,17 @@ button.clear {
   color: #888;
   margin-bottom: 12px;
 }
+
+.messages{
+  margin-top:2em;
+  top: 35em;
+  display: inline-block;
+  /*background-color: greenyellow;*/
+  width: 48%;
+  border:2px #eee solid;
+  position: absolute;
+  height: 25%;
+  left: 0px;
+  padding:3px;
+  margin-left:5px;
+}

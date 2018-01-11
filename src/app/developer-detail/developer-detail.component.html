@@ -1,4 +1,4 @@
-<div *ngIf="developer">
+<div *ngIf="developer" id="developer-detail">
   <button type="button" (click)="goBack()">go back</button>
   <button type="button" (click)="saveDeveloper()">save</button>
   <h2>{{developer.name | uppercase}} details</h2>
@@ -9,4 +9,8 @@
   </div>
   <h4>location details</h4>
   <span>{{developer.location |json}}</span>
+</div>
+
+<div id="maps">
+  <app-developer-location></app-developer-location>
 </div>

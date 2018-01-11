@@ -1,3 +1,4 @@
+<div id="developers">
 <ul class="developers">
   <li [class.selected]="developer === selectedDeveloper" *ngFor="let developer of developers">
     <a routerLink="/detail/{{developer.id}}">
@@ -13,4 +14,4 @@
   <button type="button" (click)="add(developerName.value); developerName.value = ''">add new developer</button>
 </div>
 <!--<app-developer-detail [developer]="selectedDeveloper"></app-developer-detail>-->
-
+</div>
