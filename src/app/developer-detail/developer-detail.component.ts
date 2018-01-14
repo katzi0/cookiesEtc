@@ -7,10 +7,10 @@ import { DeveloperService } from '../developer.service';
 @Component({
   selector: 'app-developer-detail',
   templateUrl: './developer-detail.component.html',
-  styleUrls: ['./developer-detail.component.css']
+  styleUrls: ['./developer-detail.component.scss']
 })
 export class DeveloperDetailComponent implements OnInit {
-  @Input() developer:Developer;
+  @Input() developer: Developer;
   constructor(
     private route: ActivatedRoute,
     private developerService: DeveloperService,
