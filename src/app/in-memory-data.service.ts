@@ -4,7 +4,7 @@ export class InMemoryDataService implements InMemoryDbService {
     const heroes = [
       {
         id : 1,
-        name: 'shai',
+        name: 'Shai',
         location:
           {
             name:"Paris Office",
@@ -14,22 +14,22 @@ export class InMemoryDataService implements InMemoryDbService {
       },
       {
         id : 2,
-        name: 'shai2',
+        name: 'Shai2',
         location:
           {
-            name:"shai's Office",
-            longitude:123,
-            latitude:123
+            name:"Madrid Office",
+            longitude: -3.7037901999999576,
+            latitude: 40.4167754
           }
       },
       {
         id : 3,
-        name: 'shai3',
+        name: 'Shai3',
         location:
           {
-            name:"shai's Office",
-            longitude:123,
-            latitude:123
+            name:"London's Office",
+            longitude: -0.12775829999998223,
+            latitude: 51.5073509
           }
       },
       {
@@ -37,9 +37,9 @@ export class InMemoryDataService implements InMemoryDbService {
         name: 'shai4',
         location:
           {
-            name:"shai's Office",
-            longitude:123,
-            latitude:123
+            name: "Tel Aviv's Office",
+            longitude: 34.78176759999997,
+            latitude: 32.0852999
           }
       },
       {
@@ -47,9 +47,9 @@ export class InMemoryDataService implements InMemoryDbService {
         name: 'shai5',
         location:
           {
-            name:"shai's Office",
-            longitude:123,
-            latitude:123
+            name: "Rome's Office",
+            longitude: 12.496365500000024,
+            latitude: 41.9027835
           }
       },
       {
@@ -57,9 +57,9 @@ export class InMemoryDataService implements InMemoryDbService {
         name: 'shai6',
         location:
           {
-            name:"shai's Office",
-            longitude:123,
-            latitude:123
+            name: "Moscow's Office",
+            longitude: 37.617299900000035,
+            latitude: 55.755826
           }
       },
       {
@@ -67,9 +67,9 @@ export class InMemoryDataService implements InMemoryDbService {
         name: 'shai7',
         location:
           {
-            name:"shai's Office",
-            longitude:123,
-            latitude:123
+            name: "Manchester's Office",
+            longitude: -2.2426305000000184,
+            latitude: 53.4807593
           }
       },
       {
@@ -77,9 +77,9 @@ export class InMemoryDataService implements InMemoryDbService {
         name: 'shai8',
         location:
           {
-            name:"shai's Office",
-            longitude:123,
-            latitude:123
+            name: "Barcelona's Office",
+            longitude: 2.1734034999999494,
+            latitude: 41.3850639
           }
       }
     ]

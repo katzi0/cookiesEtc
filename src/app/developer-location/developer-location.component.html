@@ -1,6 +1,7 @@
 <div class='developer-location'>
   <div *ngIf="developer">
     <h2>{{developer.name | uppercase}} Location</h2>
+    <h3>{{developer.location.name}}</h3>
     <h4>longitude: {{developer.location.longitude}}</h4>
     <h4>latitude: {{developer.location.latitude}}</h4>
   </div>

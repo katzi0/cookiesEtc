@@ -9,7 +9,7 @@ import {Developer} from '../developr';
 @Component({
   selector: 'app-developer-location',
   templateUrl: './developer-location.component.html',
-  styleUrls: ['./developer-location.component.css']
+  styleUrls: ['./developer-location.component.scss']
 })
 export class DeveloperLocationComponent implements OnInit {
   developer: Developer;

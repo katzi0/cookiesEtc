@@ -1,8 +1,9 @@
 import {AfterViewInit, Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import 'cesium/Build/Cesium/Cesium.js';
-import {OfficeLocation, Rectangle} from '../office.location';
+import {OfficeLocation} from '../office.location';
 import {DeveloperService} from '../developer.service';
 import { ActivatedRoute } from '@angular/router';
+import {Developer} from '../developr';
 
 
 @Component({
@@ -11,16 +12,18 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./cesium.component.scss']
 })
 export class CesiumComponent implements OnInit, AfterViewInit {
+  developer: Developer;
   location: OfficeLocation;
   @ViewChild('cesiumContainer') cesiumContainer: ElementRef;
   cesiumViewer: any;
   layers: any;
-  rectangle: Rectangle = {
-    west: 1,
-    north: 1,
-    east: 1,
-    south:1
-  };
+  // rectangle: Rectangle = {
+  //   west: 1,
+  //   north: 1,
+  //   east: 1,
+  //   south: 1 };
+  entity: any;
+  pinBuilder = new Cesium.PinBuilder();
 
   constructor(private developerService: DeveloperService, private route: ActivatedRoute) {
     Cesium.BingMapsApi.defaultKey = 'AroazdWsTmTcIx4ZE3SIicDXX00yEp9vuRZyn6pagjyjgS-VdRBfBNAVkvrucbqr';
@@ -29,7 +32,7 @@ export class CesiumComponent implements OnInit, AfterViewInit {
 
   ngOnInit() {
     const id = +this.route.snapshot.paramMap.get('id');
-    this.developerService.getDeveloper(id).subscribe(developer => this.location = developer.location);
+    this.developerService.getDeveloper(id).subscribe(developer => this.developer = developer);
   }
 
   ngAfterViewInit() {
@@ -42,29 +45,29 @@ export class CesiumComponent implements OnInit, AfterViewInit {
       sceneModePicker: false,
       selectionIndicator: false,
       navigationHelpButton: false,
-      animation: false
+      animation: false,
+      timeline: false,
+      projectionPicker: false,
+      geocoder: false,
+      bottom: false
     });
-    this.layers = this.cesiumViewer.scene.imageryLayers;
+    this.cesiumViewer.resize();
+    // this.layers = this.cesiumViewer.scene.imageryLayers;
+  }
+  markLocation() {
+    // Cesium.buildModuleUrl('../Assets/Cesium/Assets/Textures/maki/grocery.png');
+    this.cesiumViewer.entities.add({
+      name: 'test',
+      position : Cesium.Cartesian3.fromDegrees(this.developer.location.longitude, this.developer.location.latitude),
+      billboard : {
+        image : this.pinBuilder.fromText(this.developer.name, Cesium.Color.BLACK, 90).toDataURL(),
+        verticalOrigin : Cesium.VerticalOrigin.BOTTOM
+      }
+    });
   }
   flyTo() {
-    this.calculateRectangle();
-    this.markUserLocation();
     this.cesiumViewer.camera.flyTo({
-     destination : Cesium.Rectangle.fromDegrees( this.rectangle.west, this.rectangle.south, this.rectangle.east, this.rectangle.north)
+      destination : Cesium.Cartesian3.fromDegrees(this.developer.location.longitude, this.developer.location.latitude, 100000.0),
    });
   }
-  markUserLocation() {
-    this.layers.addImageryProvider(new Cesium.SingleTileImageryProvider({
-      url : '../assets/images/person-icon.png',
-      rectangle : Cesium.Rectangle.fromDegrees( this.rectangle.west, this.rectangle.south, this.rectangle.east, this.rectangle.north)
-    }));
-  }
-
-  calculateRectangle() {
-    this.rectangle.west = this.location.longitude;
-    this.rectangle.south = this.location.latitude;
-    this.rectangle.east = this.rectangle.west - 5;
-    this.rectangle.north = this.rectangle.south - 5;
-  }
-
 }
