@@ -17,6 +17,7 @@ import { InMemoryDataService }  from './in-memory-data.service';
 import { DeveloperSearchComponent } from './developer-search/developer-search.component';
 import { HeaderNavComponent } from './header-nav/header-nav.component';
 import { DeveloperLocationComponent } from './developer-location/developer-location.component';
+import { CesiumComponent } from './cesium/cesium.component';
 
 
 
@@ -29,7 +30,8 @@ import { DeveloperLocationComponent } from './developer-location/developer-locat
     DashboardComponent,
     DeveloperSearchComponent,
     HeaderNavComponent,
-    DeveloperLocationComponent
+    DeveloperLocationComponent,
+    CesiumComponent
   ],
   imports: [
     BrowserModule,
