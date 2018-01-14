@@ -6,9 +6,9 @@ export const DEVELOPERS: Developer[] = [
     name: 'shai',
     location:
       {
-        name:"shai's Office",
-        longitude:123,
-        latitude:123
+        name:"Paris Office",
+        longitude:2.3522219000000177,
+        latitude:48.856614
     }
   },
   {
