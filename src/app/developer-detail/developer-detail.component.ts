@@ -18,10 +18,10 @@ export class DeveloperDetailComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.getHero();
+    this.getDeveloper();
   }
 
-  getHero(){
+  getDeveloper(){
     const id = +this.route.snapshot.paramMap.get('id');
     this.developerService.getDeveloper(id).subscribe(developer=> this.developer = developer);
   }

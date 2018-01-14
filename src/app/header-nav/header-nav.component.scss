@@ -1,0 +1,44 @@
+#header-navbar{
+  position:absolute;
+  top:0px;
+  height: 9rem;
+  display: block;
+  width:100%;
+  background: #eee;
+
+  .header-panel {
+    position:absolute;
+    display:block;
+    top:0px;
+    height:30px;
+    width:100%;
+    background:black;
+  }
+
+
+
+  button:hover {
+    background: #cfd8dc;
+  }
+
+  button {
+    border-radius: 3px;
+    height: 30px;
+    border-color: transparent;
+    background: white;
+    a{
+      text-decoration: none;
+      font-size: 16px;
+    }
+    a,a:visited, a:hover {
+      color: #336699;
+    }
+  }
+
+}
+
+
+
+
+
+

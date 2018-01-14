@@ -7,10 +7,18 @@
     <label>name:</label>
     <input type="text" [(ngModel)]="developer.name" placeholder="name">
   </div>
+  <div>
+    <label>location latitue:</label>
+    <input type="number" [(ngModel)]="developer.location.latitude" placeholder="name">
+  </div>
+  <div>
+    <label>location longitude:</label>
+    <input type="number" [(ngModel)]="developer.location.longitude" placeholder="name">
+  </div>
   <h4>location details</h4>
   <span>{{developer.location |json}}</span>
 </div>
-
-<div id="maps">
-  <app-developer-location></app-developer-location>
-</div>
+<app-developer-location></app-developer-location>
+<!--<div id="maps">-->
+  <!--<app-developer-location></app-developer-location>-->
+<!--</div>-->
