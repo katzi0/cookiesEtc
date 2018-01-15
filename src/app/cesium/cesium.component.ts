@@ -10,18 +10,13 @@ import {Developer} from '../developr';
   selector: 'app-cesium',
   templateUrl: './cesium.component.html',
   styleUrls: ['./cesium.component.scss']
+  // styleUrls: ['../../assets/Cesium_tmp/Widgets/CesiumWidget/CesiumWidget.css']
 })
 export class CesiumComponent implements OnInit, AfterViewInit {
   developer: Developer;
   location: OfficeLocation;
   @ViewChild('cesiumContainer') cesiumContainer: ElementRef;
   cesiumViewer: any;
-  layers: any;
-  // rectangle: Rectangle = {
-  //   west: 1,
-  //   north: 1,
-  //   east: 1,
-  //   south: 1 };
   entity: any;
   pinBuilder = new Cesium.PinBuilder();
 
@@ -51,7 +46,7 @@ export class CesiumComponent implements OnInit, AfterViewInit {
       geocoder: false,
       bottom: false
     });
-    this.cesiumViewer.resize();
+    this.cesiumViewer.forceResize();
     // this.layers = this.cesiumViewer.scene.imageryLayers;
   }
   markLocation() {
@@ -64,6 +59,7 @@ export class CesiumComponent implements OnInit, AfterViewInit {
         verticalOrigin : Cesium.VerticalOrigin.BOTTOM
       }
     });
+    this.flyTo();
   }
   flyTo() {
     this.cesiumViewer.camera.flyTo({

@@ -1,17 +1,25 @@
 <div id="developers">
 <ul class="developers">
   <li [class.selected]="developer === selectedDeveloper" *ngFor="let developer of developers">
+    <span class="developer-name">
+       <button>
     <a routerLink="/detail/{{developer.id}}">
     <span class="badge">{{developer.id}}</span>{{developer.name}}
     </a>
+    </button>
+    </span>
     <button class="delete" title="delete developer"
-            (click)="delete(developer)">x</button>
+            (click)="delete(developer)"><span><i class="fa fa-trash-o" aria-hidden="true"></i>
+</span></button>
   </li>
 </ul>
 
 <div>
   <label>add developer <input #developerName/></label>
-  <button type="button" (click)="add(developerName.value); developerName.value = ''">add new developer</button>
+  <button type="button" (click)="add(developerName.value); developerName.value = ''">
+  <span [style.color]="'blue'"><i class="fa fa-2x fa-plus-square" aria-hidden="true"></i>
+</span>
+  </button>
 </div>
 <!--<app-developer-detail [developer]="selectedDeveloper"></app-developer-detail>-->
 </div>

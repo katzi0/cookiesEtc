@@ -1,13 +1,11 @@
 <div class="content" id="dashboard">
 <h3>Top Developer</h3>
-<div class="grid grid-pad">
   <a *ngFor="let developer of developers" class="col-1-4"
   routerLink="/detail/{{developer.id}}">
-    <div class="module hero">
-      <h4>{{developer.name}}</h4>
+    <div class="developer-box">
+      <span>{{developer.name}}</span>
     </div>
   </a>
-</div>
 
 <app-developer-search></app-developer-search>
 </div>

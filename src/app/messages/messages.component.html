@@ -1,6 +1,8 @@
 <div *ngIf="messeagesService.messeages.length" class="messages">
   <h2>messages:</h2>
-  <button type="button" (click)="messeagesService.clear()">clear</button>
+  <button type="button" (click)="messeagesService.clear()">
+    <i class="fa fa-2x fa-trash-o" aria-hidden="true"></i>
+  </button>
   <ul>
     <li *ngFor="let messeage of messeagesService.messeages">
       {{messeage}}

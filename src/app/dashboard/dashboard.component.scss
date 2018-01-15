@@ -1,0 +1,33 @@
+/* DashboardComponent's private CSS styles */
+#dashboard {
+  display:inline-block;
+  border:2px #eee solid;
+  /*background-color: red;*/
+  width:48%;
+  position: absolute;
+  top:10em;
+  left:0px;
+  height:30%;
+  padding: 3px;
+  margin-left:5px;
+  background-color: #DDDDDD;
+
+.developer-box {
+  padding: 20px;
+  /* text-align: center; */
+  color: #eee;
+  /* max-height: 98px; */
+  min-width: 55px;
+  background-color: #607D8B;
+  border-radius: 2px;
+  height: 0px;
+  width: 10px;
+  margin-right: 5px;
+  display: inline-block;
+  text-align: center;
+}
+  a {
+    text-decoration: none;
+  }
+}
+

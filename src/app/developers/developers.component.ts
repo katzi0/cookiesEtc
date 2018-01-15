@@ -6,7 +6,7 @@ import { MesseagesService } from '../messeages.service';
 @Component({
   selector: 'app-developers',
   templateUrl: './developers.component.html',
-  styleUrls: ['./developers.component.css']//,
+  styleUrls: ['./developers.component.scss']//,
   // providers: [DeveloperService]
 })
 export class DevelopersComponent implements OnInit {
