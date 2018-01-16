@@ -21,12 +21,12 @@ export class DeveloperDetailComponent implements OnInit {
     this.getDeveloper();
   }
 
-  getDeveloper(){
+  getDeveloper() {
     const id = +this.route.snapshot.paramMap.get('id');
-    this.developerService.getDeveloper(id).subscribe(developer=> this.developer = developer);
+    this.developerService.getDeveloper(id).subscribe(developer => this.developer = developer);
   }
 
-  goBack(){
+  goBack() {
     this.location.back();
   }
 

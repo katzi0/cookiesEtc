@@ -18,6 +18,10 @@ import { DeveloperSearchComponent } from './developer-search/developer-search.co
 import { HeaderNavComponent } from './header-nav/header-nav.component';
 import { DeveloperLocationComponent } from './developer-location/developer-location.component';
 import { CesiumComponent } from './cesium/cesium.component';
+import { WeatherWidgetComponent } from './weather-widget/weather-widget.component';
+import {WeatherService} from './weather.service';
+
+
 
 
 
@@ -31,18 +35,19 @@ import { CesiumComponent } from './cesium/cesium.component';
     DeveloperSearchComponent,
     HeaderNavComponent,
     DeveloperLocationComponent,
-    CesiumComponent
+    CesiumComponent,
+    WeatherWidgetComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpClientModule,
-    HttpClientInMemoryWebApiModule.forRoot(
-      InMemoryDataService, { dataEncapsulation: false }
-    ),
+    // HttpClientInMemoryWebApiModule.forRoot(
+    //   InMemoryDataService, { dataEncapsulation: false }
+    // ),
     AppRoutingModule,
   ],
-  providers: [DeveloperService, MesseagesService],
+  providers: [DeveloperService, MesseagesService, WeatherService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

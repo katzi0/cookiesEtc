@@ -2,9 +2,9 @@ import { Injectable } from '@angular/core';
 
 @Injectable()
 export class MesseagesService {
-  messeages:string[] = [];
+  messeages: string[] = [];
 
-  add(message:string){
+  add(message: string){
     this.messeages.push(message);
   }
   clear(){

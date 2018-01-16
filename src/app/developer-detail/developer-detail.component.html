@@ -13,8 +13,8 @@
     <span>
       <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
     </span>
-    <input type="text" [(ngModel)]="developer.name" placeholder="name">
-  </div>
+      <input type="text" [(ngModel)]="developer.name" placeholder="name">
+    </div>
   </div>
   <div>
     <label>location latitude</label>
@@ -33,11 +33,12 @@
     </span>
       <input type="number" [(ngModel)]="developer.location.longitude" placeholder="name">
     </div>
-</div>
+  </div>
   <!--<h4>location details</h4>-->
   <!--<span>{{developer.location |json}}</span>-->
+  <app-weather-widget></app-weather-widget>
 </div>
 <app-developer-location></app-developer-location>
 <!--<div id="maps">-->
-  <!--<app-developer-location></app-developer-location>-->
+<!--<app-developer-location></app-developer-location>-->
 <!--</div>-->
