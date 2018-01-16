@@ -1,0 +1,56 @@
+<div class="card">
+  <div class="card-body"
+       *ngIf="developer"
+       <!--[class.done]="todo.status == 'done'"-->
+       [class.selected]="developer.selected"
+       [class.loading]="developer.loading"
+       [class.editing] = "developer.editing"
+       [class.edited] = "developer.edited"
+       [class.error] = "developer.error"
+  >
+
+    <div class="row">
+      <ng-container *ngIf="!developer.create && !developer.editing">
+
+        <div class="col-md-3">
+
+          <p>{{developer.title}}</p>
+        </div>
+
+        <div class="col-md-2">
+
+          <p>{{developer.description}}</p>
+        </div>
+
+        <div class="col-md-2">
+          <p>{{developer.date | date}}</p>
+        </div>
+      </ng-container>
+    </div>
+  </div>
+</div>
+<div class="col-md-3 options" >
+  <ng-container *ngIf="!todo.create && !todo.editing">
+    <button class="btn btn-success" *ngIf="todo.status != 'done'" (click)="completeTodo(todo)">
+      <i  class="fa fa-check"></i>
+    </button>
+    <button class="btn btn-primary" (click)="editTodo(todo)">
+      <i  class="fa fa-pencil"></i>
+    </button>
+    <button class="btn btn-danger" (click)="this.deleted.emit(todo);">
+      <i  class="fa fa-trash"></i>
+    </button>
+  </ng-container>
+  <ng-container *ngIf="todo.create">
+    <button class="btn btn-success" (click)="createTodo(todo)">
+      Create
+    </button>
+  </ng-container>
+
+  <ng-container *ngIf="todo.editing">
+
+    <button class="btn btn-primary" (click)="editTodoSubmit(todo)">
+      Submit
+    </button>
+  </ng-container>
+</div>

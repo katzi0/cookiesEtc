@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { DEVELOPERS } from './mock-developers';
-import { Developer } from './developr';
+import { Developer } from './models/developr.model';
 import { Observable } from 'rxjs';
 import { catchError,map, tap } from 'rxjs/operators';
 import { of } from 'rxjs/observable/of'

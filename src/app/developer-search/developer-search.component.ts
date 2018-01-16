@@ -9,7 +9,7 @@ import {
 } from 'rxjs/operators';
 
 import { DeveloperService } from '../developer.service';
-import { Developer } from '../developr';
+import { Developer } from '../models/developr.model';
 
 
 @Component({

@@ -3,7 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable} from 'rxjs/Observable';
 import { catchError, tap } from 'rxjs/operators';
 import 'rxjs/add/operator/map';
-import {Developer} from './developr';
+import {Developer} from './models/developr.model';
 import {of} from 'rxjs/observable/of';
 import {OfficeLocation} from './office.location';
 

@@ -1,4 +1,4 @@
-import {Developer} from "./developr";
+import {Developer} from "./models/developr.model";
 
 export const DEVELOPERS: Developer[] =[
   {

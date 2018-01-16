@@ -20,7 +20,12 @@ import { DeveloperLocationComponent } from './developer-location/developer-locat
 import { CesiumComponent } from './cesium/cesium.component';
 import { WeatherWidgetComponent } from './weather-widget/weather-widget.component';
 import {WeatherService} from './weather.service';
+import { StoreModule } from '@ngrx/store';
 
+import { EffectsModule } from '@ngrx/effects';
+import {DeveloperEffects} from './store/developer/developer.effects';
+import {DeveloperReducer} from './store/developer/developer.reducer';
+import { DeveloperItemComponent } from './developer-item/developer-item.component';
 
 
 
@@ -36,7 +41,8 @@ import {WeatherService} from './weather.service';
     HeaderNavComponent,
     DeveloperLocationComponent,
     CesiumComponent,
-    WeatherWidgetComponent
+    WeatherWidgetComponent,
+    DeveloperItemComponent
   ],
   imports: [
     BrowserModule,
@@ -46,6 +52,9 @@ import {WeatherService} from './weather.service';
     //   InMemoryDataService, { dataEncapsulation: false }
     // ),
     AppRoutingModule,
+    StoreModule.forRoot({developers: DeveloperReducer}),
+    EffectsModule.forRoot([DeveloperEffects])
+
   ],
   providers: [DeveloperService, MesseagesService, WeatherService],
   bootstrap: [AppComponent]

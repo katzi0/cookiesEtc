@@ -3,7 +3,7 @@ import 'cesium/Build/Cesium/Cesium.js';
 import {OfficeLocation} from '../office.location';
 import {DeveloperService} from '../developer.service';
 import { ActivatedRoute } from '@angular/router';
-import {Developer} from '../developr';
+import {Developer} from '../models/developr.model';
 
 
 @Component({
