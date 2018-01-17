@@ -8,8 +8,8 @@ import {
   debounceTime, distinctUntilChanged, switchMap
 } from 'rxjs/operators';
 
-import { DeveloperService } from '../developer.service';
-import { Developer } from '../models/developr.model';
+import { DeveloperService } from '../../services/developer.service';
+import { Developer } from '../../models/developr.model';
 
 
 @Component({

@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { DeveloperService } from '../developer.service';
-import {OfficeLocation} from '../office.location';
-import {WeatherService} from '../weather.service';
+import { DeveloperService } from '../../services/developer.service';
+import {OfficeLocation} from '../../models/office.location';
+import {WeatherService} from '../../services/weather.service';
 import {Observable} from 'rxjs/Observable';
 import { map } from 'rxjs/operators';
 import 'rxjs/add/operator/mergeMap';

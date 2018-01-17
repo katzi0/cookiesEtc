@@ -13,6 +13,7 @@ import { of } from 'rxjs/observable/of';
 import * as DeveloperActions from './developer.action';
 
 import { HttpClient } from '@angular/common/http';
+import {LoaderActions, ToggleLoader} from '../loader/loader.action';
 
 @Injectable()
 export class DeveloperEffects {
@@ -22,4 +23,14 @@ export class DeveloperEffects {
     private actions$: Actions
   ) { }
 
-}
+  @Effect()
+    addDeveloper = this.actions$
+      .ofType(DeveloperActions.ADD_DEVELOPER)
+      .flatMap( (action: LoaderActions) => [
+        new ToggleLoader(false)],
+      );
+  // .flatMap(() => [
+      //   new ToggleLoader(true)
+      // ]);
+// /.map(x => console.log("DeveloperActions.ADD_DEVELOPER"));
+  }

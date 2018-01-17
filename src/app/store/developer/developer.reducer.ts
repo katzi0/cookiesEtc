@@ -1,38 +1,44 @@
 import {Developer} from '../../models/developr.model';
-import { DeveloperState, DeveloperListState, initializeDeveloperState } from './developer.state';
+// import {DeveloperState, DeveloperListState, initializeDeveloperState} from './developer.state';
 import * as DeveloperActions from './developer.action';
 
 export type Action = DeveloperActions.All;
 
-const defaultDevelopersStates: DeveloperState[] = [
-  {
-    ...Developer.generateMockDeveloper(),
-    ...initializeDeveloperState()
-  }
-]
-
-
-const defaultState: DeveloperListState = {
-  developers: defaultDevelopersStates,
-  loading: false,
-  pending: 0
+export interface DeveloperState {
+  showLoader: boolean;
+  status: string;
 }
 
-export function DeveloperReducer(state = defaultState, action: Action) {
+const initState: DeveloperState = {
+  showLoader: true,
+  status: 'none'
+};
+
+
+export function DeveloperReducer(state = initState, action: Action) {
   console.log(state, action);
 
   switch (action.type) {
     case DeveloperActions.LOAD_DEVELOPERS:
-      return {...state, loaded: false, loading: true};
+      return {...state};
+
+    // case DeveloperActions.LOAD_DEVELOPERS_SUCCESS:
+    //   return {
+    //     ...state,
+    //     developers: [
+    //       action.payload,
+    //       defaultDevelopersStates[0]
+    //     ],
+    //     loading: false
+    //   };
 
     case DeveloperActions.LOAD_DEVELOPERS_SUCCESS:
-      return {
-        ...state,
-        developers: [
-          action.payload,
-          defaultDevelopersStates[0]
-        ],
-        loading: false
-      };
+      return {...state, loading: false};
+
+    case DeveloperActions.ADD_DEVELOPER:
+      return {...state, loading: false};
+
+    default:
+      return state;
   }
 }

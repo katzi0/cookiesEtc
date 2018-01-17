@@ -35,12 +35,14 @@ export const initializeDeveloperState = function () {
 export interface DeveloperListState {
   developers: DeveloperState[];
   loading: boolean;
-  pending: number;
+  loaded: boolean;
+  // pending: number;
 }
 
 export const intializeDeveloperListState = function () {
   return {
     loading: false,
-    pedning: 0,
+    loaded: true,
+    // pedning: 0,
   };
 };

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { DEVELOPERS } from './mock-developers';
-import { Developer } from './models/developr.model';
+import { DEVELOPERS } from '../mocks/mock-developers';
+import { Developer } from '../models/developr.model';
 import { Observable } from 'rxjs';
 import { catchError,map, tap } from 'rxjs/operators';
 import { of } from 'rxjs/observable/of'
@@ -65,8 +65,10 @@ export class DeveloperService {
   // }
 
   addDeveloper(developer: Developer): Observable<Developer> {
-    this.log(`addDeveloper with id=${developer.id}`);
-    DEVELOPERS.push(Developer);
+    const id = Math.max(...DEVELOPERS.map(x => x.id)) + 1;
+    this.log(`addDeveloper with id=${id}`);
+    developer.id = id;
+    DEVELOPERS.push(developer);
     return of(developer);
   }
 

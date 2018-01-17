@@ -4,30 +4,30 @@ import {FormsModule} from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
-import { DevelopersComponent } from './developers/developers.component';
-import { DeveloperDetailComponent } from './developer-detail/developer-detail.component';
-import {DeveloperService} from "./developer.service";
-import { MessagesComponent } from './messages/messages.component';
-import { MesseagesService } from './messeages.service';
+import { DevelopersComponent } from './components/developers/developers.component';
+import { DeveloperDetailComponent } from './components/developer-detail/developer-detail.component';
+import {DeveloperService} from "./services/developer.service";
+import { MessagesComponent } from './components/messages/messages.component';
+import { MesseagesService } from './services/messeages.service';
 import { AppRoutingModule } from './/app-routing.module';
-import { DashboardComponent } from './dashboard/dashboard.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
 
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
-import { InMemoryDataService }  from './in-memory-data.service';
-import { DeveloperSearchComponent } from './developer-search/developer-search.component';
-import { HeaderNavComponent } from './header-nav/header-nav.component';
-import { DeveloperLocationComponent } from './developer-location/developer-location.component';
-import { CesiumComponent } from './cesium/cesium.component';
-import { WeatherWidgetComponent } from './weather-widget/weather-widget.component';
-import {WeatherService} from './weather.service';
+import { InMemoryDataService }  from './services/in-memory-data.service';
+import { DeveloperSearchComponent } from './components/developer-search/developer-search.component';
+import { HeaderNavComponent } from './components/header-nav/header-nav.component';
+import { DeveloperLocationComponent } from './components/developer-location/developer-location.component';
+import { CesiumComponent } from './components/cesium/cesium.component';
+import { WeatherWidgetComponent } from './components/weather-widget/weather-widget.component';
+import {WeatherService} from './services/weather.service';
 import { StoreModule } from '@ngrx/store';
 
 import { EffectsModule } from '@ngrx/effects';
 import {DeveloperEffects} from './store/developer/developer.effects';
 import {DeveloperReducer} from './store/developer/developer.reducer';
-import { DeveloperItemComponent } from './developer-item/developer-item.component';
+import { DeveloperItemComponent } from './components/developer-item/developer-item.component';
 
-
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
 
 @NgModule({
@@ -53,7 +53,12 @@ import { DeveloperItemComponent } from './developer-item/developer-item.componen
     // ),
     AppRoutingModule,
     StoreModule.forRoot({developers: DeveloperReducer}),
-    EffectsModule.forRoot([DeveloperEffects])
+    EffectsModule.forRoot([DeveloperEffects]),
+
+    StoreDevtoolsModule.instrument({
+      maxAge: 25, // Retains last 25 states
+    })
+    // StoreDevtoolsModule.instrumentOnlyWithExtension({maxAge: 5})
 
   ],
   providers: [DeveloperService, MesseagesService, WeatherService],

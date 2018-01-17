@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Developer } from '../models/developr.model';
-import { DeveloperService } from '../developer.service';
+import { Developer } from '../../models/developr.model';
+import { DeveloperService } from '../../services/developer.service';
 
 @Component({
   selector: 'app-dashboard',

@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { DevelopersComponent } from "./developers/developers.component";
-import { DashboardComponent } from "./dashboard/dashboard.component";
-import { DeveloperDetailComponent } from './developer-detail/developer-detail.component';
+import { DevelopersComponent } from "./components/developers/developers.component";
+import { DashboardComponent } from "./components/dashboard/dashboard.component";
+import { DeveloperDetailComponent } from './components/developer-detail/developer-detail.component';
 
 const routes: Routes = [
   {path:'developers',component:DevelopersComponent},

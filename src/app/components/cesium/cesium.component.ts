@@ -1,9 +1,9 @@
 import {AfterViewInit, Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import 'cesium/Build/Cesium/Cesium.js';
-import {OfficeLocation} from '../office.location';
-import {DeveloperService} from '../developer.service';
+import {OfficeLocation} from '../../models/office.location';
+import {DeveloperService} from '../../services/developer.service';
 import { ActivatedRoute } from '@angular/router';
-import {Developer} from '../models/developr.model';
+import {Developer} from '../../models/developr.model';
 
 
 @Component({

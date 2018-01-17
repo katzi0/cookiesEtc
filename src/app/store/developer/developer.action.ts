@@ -15,7 +15,8 @@ export const FETCH_DEVELOPERS_FROM_API = '[Developers] Fetch';
 export const LOAD_DEVELOPERS_SUCCESS = '[Developers] Fetch success';
 export const UPDATE_DEVELOPERS = '[Developers] Update books';
 export const LOAD_DEVELOPERS_ERROR = '[Developers] Fetch error';
-
+export const ADD_DEVELOPER = '[Developers] Add';
+export const ADD_DEVELOPER_SUCCESS = '[Developers] Add Success';
 
 
 export class LoadDevelopers implements Action {
@@ -38,7 +39,17 @@ export class FetchDevelopersFromApi implements Action {
   }
 }
 
-export class LoadDevelopersSuccess implements Action  {
+export class AddDeveloper implements Action {
+  public type: string;
+  public payload: Developer;
+
+  constructor(payload: Developer) {
+    this.type = ADD_DEVELOPER;
+    this.payload = payload;
+  }
+}
+
+export class LoadDevelopersSuccess implements Action {
   public type: string;
   public payload: any;
 
@@ -48,7 +59,7 @@ export class LoadDevelopersSuccess implements Action  {
   }
 }
 
-export class UpdateDevelopers implements Action  {
+export class UpdateDevelopers implements Action {
   public type: string;
   public payload: any;
 
@@ -68,4 +79,4 @@ export class LoadDevelopersError implements Action {
   }
 }
 
-export type All = LoadDevelopers | FetchDevelopersFromApi | LoadDevelopersSuccess | LoadDevelopersError | UpdateDevelopers;
+export type All = LoadDevelopers | AddDeveloper | FetchDevelopersFromApi | LoadDevelopersSuccess | LoadDevelopersError | UpdateDevelopers;

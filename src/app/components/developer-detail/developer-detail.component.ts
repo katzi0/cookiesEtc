@@ -1,8 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Developer } from "../models/developr.model";
+import { Developer } from "../../models/developr.model";
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
-import { DeveloperService } from '../developer.service';
+import { DeveloperService } from '../../services/developer.service';
 
 @Component({
   selector: 'app-developer-detail',

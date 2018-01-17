@@ -1,4 +1,4 @@
-import {OfficeLocation} from '../office.location';
+import {OfficeLocation} from './office.location';
 export class Developer {
   id?:number;
   name:string;
