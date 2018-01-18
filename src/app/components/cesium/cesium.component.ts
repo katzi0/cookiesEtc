@@ -9,7 +9,8 @@ import {Developer} from '../../models/developr.model';
 @Component({
   selector: 'app-cesium',
   templateUrl: './cesium.component.html',
-  styleUrls: ['./cesium.component.scss']
+  styleUrls: ['./cesium.component.scss'],
+  providers: [DeveloperService]
   // styleUrls: ['../../assets/Cesium_tmp/Widgets/CesiumWidget/CesiumWidget.css']
 })
 export class CesiumComponent implements OnInit, AfterViewInit {

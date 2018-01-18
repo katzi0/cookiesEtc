@@ -1,21 +1,23 @@
-import { Injectable } from '@angular/core';
-import { DEVELOPERS } from '../mocks/mock-developers';
-import { Developer } from '../models/developr.model';
-import { Observable } from 'rxjs';
-import { catchError,map, tap } from 'rxjs/operators';
-import { of } from 'rxjs/observable/of'
-import { MesseagesService } from './messeages.service';
-import { HttpClient, HttpHeaders, } from '@angular/common/http';
-
-const httpOptions = {
-  headers: new HttpHeaders({'Content-Type':'application/json'})
-}
+import {Injectable} from '@angular/core';
+import {DEVELOPERS} from '../mocks/mock-developers';
+import {Developer} from '../models/developr.model';
+import {Observable} from 'rxjs';
+import {catchError, map, tap} from 'rxjs/operators';
+import {of} from 'rxjs/observable/of';
+import {MesseagesService} from './messeages.service';
+// import {HttpClient, HttpHeaders,} from '@angular/common/http';
+import {Message} from '../models/message';
+//
+// const httpOptions = {
+//   headers: new HttpHeaders({'Content-Type': 'application/json'})
+// };
 
 @Injectable()
 export class DeveloperService {
   private developersUrl = 'api/heroes';
-
-  constructor(private http: HttpClient, private messeagesService:MesseagesService) { }
+//private http: HttpClient,
+  constructor(private messeagesService: MesseagesService) {
+  }
 
   // getDevelopers(): Observable<Developer[]> {
   //   // return (DEVELOPERS);
@@ -29,6 +31,7 @@ export class DeveloperService {
     this.log(`getDevelopers`);
     return of(DEVELOPERS);
   }
+
   // getDeveloper(id: number): Observable<Developer> {
   //   const url = `${this.developersUrl}/${id}`;
   //   return this.http.get<Developer>(url).pipe(
@@ -66,6 +69,7 @@ export class DeveloperService {
 
   addDeveloper(developer: Developer): Observable<Developer> {
     const id = Math.max(...DEVELOPERS.map(x => x.id)) + 1;
+    console.log("id:" + id)
     this.log(`addDeveloper with id=${id}`);
     developer.id = id;
     DEVELOPERS.push(developer);
@@ -83,7 +87,7 @@ export class DeveloperService {
   // }
 
 
-  deleteDeveloper (developer: Developer): Observable<Developer> {
+  deleteDeveloper(developer: Developer): Observable<Developer> {
     this.log(`deleteDeveloper with id=${developer.id}`);
     const id = typeof developer === 'number' ? developer : developer.id;
     // const url = `${this.developersUrl}/${id}`;
@@ -111,8 +115,8 @@ export class DeveloperService {
   }
 
 
-  private log(message: string){
-    this.messeagesService.add("DeveloperService" + message);
+  private log(message: string) {
+    this.messeagesService.add('DeveloperService' + message);
   }
 
   /**
@@ -121,7 +125,7 @@ export class DeveloperService {
    * @param operation - name of the operation that failed
    * @param result - optional value to return as the observable result
    */
-  private handleError<T> (operation = 'operation', result?: T) {
+  private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
 
       // TODO: send the error to remote logging infrastructure

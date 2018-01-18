@@ -1,14 +1,13 @@
-
 <div class="weather-widget">
   <button (click)="getWeather()">
   <span><i class="fa fa-2x fa-sun-o" aria-hidden="true"></i>
 </span>
   </button>
   <div *ngIf="results">
-  <h3>Weather Widget</h3>
-  <h5>Temperature: {{temperature}}</h5>
-  <h5>Weather Status: {{weatherStatus}}</h5>
-</div>
+    <h3>Weather Widget</h3>
+    <h5>Temperature: {{temperature}}</h5>
+    <h5>Weather Status: {{weatherStatus}}</h5>
+  </div>
 </div>
 <!--<div *ngIf="results">{{results | json}}</div>-->
 

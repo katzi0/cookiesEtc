@@ -1,11 +1,24 @@
-<div *ngIf="messeagesService.messeages.length" class="messages">
+<!--<div *ngIf="messeagesService.messages.length" class="messages">-->
+  <!--<h2>messages:</h2>-->
+  <!--<button type="button" (click)="messeagesService.clear()">-->
+    <!--<i class="fa fa-2x fa-trash-o" aria-hidden="true"></i>-->
+  <!--</button>-->
+  <!--<ul>-->
+    <!--<li *ngFor="let message of messeagesService.messages">-->
+      <!--{{message.title}}-->
+    <!--</li>-->
+  <!--</ul>-->
+<!--</div>-->
+
+<div *ngIf="messages$ | async" class="messages">
   <h2>messages:</h2>
   <button type="button" (click)="messeagesService.clear()">
     <i class="fa fa-2x fa-trash-o" aria-hidden="true"></i>
   </button>
   <ul>
-    <li *ngFor="let messeage of messeagesService.messeages">
-      {{messeage}}
+    <li *ngFor="let message of  messages$ |async">
+      {{message.title}}
     </li>
   </ul>
 </div>
+

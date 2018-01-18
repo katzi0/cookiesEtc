@@ -14,23 +14,29 @@ import * as DeveloperActions from './developer.action';
 
 import { HttpClient } from '@angular/common/http';
 import {LoaderActions, ToggleLoader} from '../loader/loader.action';
+import {MesseagesService} from '../../services/messeages.service';
+import {LoadMessages} from '../messages/messages.action';
 
 @Injectable()
 export class DeveloperEffects {
 
   constructor(
     private http: HttpClient,
-    private actions$: Actions
+    private actions$: Actions,
+    private messeagesService: MesseagesService
   ) { }
 
   @Effect()
     addDeveloper = this.actions$
       .ofType(DeveloperActions.ADD_DEVELOPER)
-      .flatMap( (action: LoaderActions) => [
-        new ToggleLoader(false)],
-      );
-  // .flatMap(() => [
-      //   new ToggleLoader(true)
-      // ]);
-// /.map(x => console.log("DeveloperActions.ADD_DEVELOPER"));
-  }
+      .mergeMap(() => of(this.messeagesService.messages))
+      .map(res => new LoadMessages(res));
+
+  @Effect()
+  loadDevelopers = this.actions$
+    .ofType(DeveloperActions.LOAD_DEVELOPERS)
+    .mergeMap(() => of(this.messeagesService.messages))
+    .map(res => new LoadMessages(res));
+}
+
+

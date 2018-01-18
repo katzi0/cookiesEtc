@@ -1,14 +1,20 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
+import {Message} from '../models/message';
+import {DeveloperState} from '../store/developer/developer.reducer';
 
 @Injectable()
 export class MesseagesService {
-  messeages: string[] = [];
+  messages: Message[] = [];
+  // msg: Message = {title: 'none'};
 
-  add(message: string){
-    this.messeages.push(message);
+
+  add(message: string) {
+    const msg: Message = {title: message};
+    this.messages.push(msg);
   }
-  clear(){
-    this.messeages = [];
+
+  clear() {
+    this.messages = [];
   }
 
 }

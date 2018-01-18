@@ -19,7 +19,4 @@ describe('WeatherWidgetComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
 });

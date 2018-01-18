@@ -5,7 +5,7 @@
   <button type="button" (click)="saveDeveloper()">
     <i class="fa fa-2x fa-floppy-o" aria-hidden="true"></i>
   </button>
-  <h2>{{developer.name | uppercase}} details</h2>
+  <h2>{{ welcomeMsg }}</h2>
   <div><span>id: </span>{{developer.id}}</div>
   <div>
     <label>name:</label>
@@ -34,11 +34,7 @@
       <input type="number" [(ngModel)]="developer.location.longitude" placeholder="name">
     </div>
   </div>
-  <!--<h4>location details</h4>-->
-  <!--<span>{{developer.location |json}}</span>-->
   <app-weather-widget></app-weather-widget>
 </div>
 <app-developer-location></app-developer-location>
-<!--<div id="maps">-->
-<!--<app-developer-location></app-developer-location>-->
-<!--</div>-->
+

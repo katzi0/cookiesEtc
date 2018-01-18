@@ -28,6 +28,7 @@ import {DeveloperReducer} from './store/developer/developer.reducer';
 import { DeveloperItemComponent } from './components/developer-item/developer-item.component';
 
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import {MessageReducer} from './store/messages/message.reducer';
 
 
 @NgModule({
@@ -52,7 +53,10 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
     //   InMemoryDataService, { dataEncapsulation: false }
     // ),
     AppRoutingModule,
-    StoreModule.forRoot({developers: DeveloperReducer}),
+    StoreModule.forRoot({
+      developers: DeveloperReducer,
+      messages: MessageReducer
+    }),
     EffectsModule.forRoot([DeveloperEffects]),
 
     StoreDevtoolsModule.instrument({

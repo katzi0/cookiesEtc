@@ -5,11 +5,11 @@ import { DeveloperService } from '../../services/developer.service';
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
-  styleUrls: [ './dashboard.component.scss' ]
+  styleUrls: [ './dashboard.component.scss' ],
+  providers: [DeveloperService]
 })
 export class DashboardComponent implements OnInit {
   developers: Developer[] = [];
-  planes$
   constructor(private developerService: DeveloperService) { }
 
   ngOnInit() {

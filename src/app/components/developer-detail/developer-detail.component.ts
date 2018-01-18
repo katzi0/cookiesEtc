@@ -1,8 +1,8 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { Developer } from "../../models/developr.model";
-import { ActivatedRoute } from '@angular/router';
-import { Location } from '@angular/common';
-import { DeveloperService } from '../../services/developer.service';
+import {Component, OnInit, Input} from '@angular/core';
+import {Developer} from '../../models/developr.model';
+import {ActivatedRoute} from '@angular/router';
+import {Location} from '@angular/common';
+import {DeveloperService} from '../../services/developer.service';
 
 @Component({
   selector: 'app-developer-detail',
@@ -11,14 +11,17 @@ import { DeveloperService } from '../../services/developer.service';
 })
 export class DeveloperDetailComponent implements OnInit {
   @Input() developer: Developer;
-  constructor(
-    private route: ActivatedRoute,
-    private developerService: DeveloperService,
-    private location: Location
-  ) { }
+  welcomeMsg = '--not initalized yet--';
+
+  constructor(private route: ActivatedRoute,
+              private developerService: DeveloperService,
+              private location: Location) {
+  }
 
   ngOnInit() {
     this.getDeveloper();
+    this.welcomeMsg = this.developer ?
+      `welcome, ${this.developer.name}` : `welcome uknown`;
   }
 
   getDeveloper() {
@@ -30,8 +33,7 @@ export class DeveloperDetailComponent implements OnInit {
     this.location.back();
   }
 
-  saveDeveloper(){
+  saveDeveloper() {
     this.developerService.updateDeveloper(this.developer).subscribe(() => this.goBack());
   }
-
 }
