@@ -27,6 +27,7 @@ export class DeveloperDetailComponent implements OnInit {
   getDeveloper() {
     const id = +this.route.snapshot.paramMap.get('id');
     this.developerService.getDeveloper(id).subscribe(developer => this.developer = developer);
+    this.getCurrectUrl();
   }
 
   goBack() {
@@ -35,5 +36,10 @@ export class DeveloperDetailComponent implements OnInit {
 
   saveDeveloper() {
     this.developerService.updateDeveloper(this.developer).subscribe(() => this.goBack());
+  }
+
+  getCurrectUrl() {
+    console.log('Url:' + this.route.url);
+    return this.route.url;
   }
 }

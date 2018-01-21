@@ -15,6 +15,7 @@ import {Message} from '../models/message';
 @Injectable()
 export class DeveloperService {
   private developersUrl = 'api/heroes';
+
 //private http: HttpClient,
   constructor(private messeagesService: MesseagesService) {
   }
@@ -69,7 +70,7 @@ export class DeveloperService {
 
   addDeveloper(developer: Developer): Observable<Developer> {
     const id = Math.max(...DEVELOPERS.map(x => x.id)) + 1;
-    console.log("id:" + id)
+    console.log('id:' + id);
     this.log(`addDeveloper with id=${id}`);
     developer.id = id;
     DEVELOPERS.push(developer);

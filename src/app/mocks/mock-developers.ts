@@ -1,6 +1,6 @@
 import {Developer} from "../models/developr.model";
 
-export const DEVELOPERS: Developer[] =[
+export const DEVELOPERS: Developer[] = [
   {
     id : 1,
     name: 'Shai',

@@ -38,7 +38,7 @@ export class DevelopersComponent implements OnInit {
 
 
   constructor(private developerService: DeveloperService,
-              private messeagesService: MesseagesService,
+                private messeagesService: MesseagesService,
               private store: Store<AppState>) {
     this.message$ = this.store.select('developers');
     this.message$.subscribe(x => {
