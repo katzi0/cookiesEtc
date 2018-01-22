@@ -47,7 +47,6 @@ describe('DeveloperDetailComponent', () => {
       declarations: [DeveloperDetailComponent, WeatherWidgetComponent, DeveloperLocationComponent, CesiumComponent],
       providers: [
         {provide: DeveloperService, useClass: DeveloperServiceStub},
-        { provide: ActivatedRoute, useValue: RouterStub},
         MesseagesService
       ]
     })
@@ -55,27 +54,12 @@ describe('DeveloperDetailComponent', () => {
   }));
 
   beforeEach(() => {
-
     fixture = TestBed.createComponent(DeveloperDetailComponent);
     component = fixture.componentInstance;
-
     developerService = TestBed.get(DeveloperService);
-
-    // de = fixture.debugElement.query(By.css('h2'));
-    // el = de.nativeElement;
-
     spyOn(developerService,'getDevelopers');//.and.callThrough();
     developerService.getDevelopers();
-    // fixture.detectChanges();
-
-
   });
-  // it('should show user first name', () => {
-  //   fixture.detectChanges();
-  //   const content = el.textContent;
-  //   expect(content).toContain('Welcome', '"Welcome ..."');
-  //   // expect(el.textContent).toContain('Test User');
-  // });
   it('should invoke getDevelopers func', () => {
     expect(true).toBe(true);
     expect(developerService.getDevelopers).toHaveBeenCalled();
@@ -94,7 +78,7 @@ describe('check for user auth', () => {
       declarations: [DeveloperDetailComponent, WeatherWidgetComponent, DeveloperLocationComponent, CesiumComponent],
       providers: [
         {provide: DeveloperService, useClass: DeveloperServiceStub},
-        {provide: ActivatedRoute, useValue: RouterStub},
+        // {provide: ActivatedRoute, useValue: RouterStub},
         MesseagesService
       ]
     })
@@ -102,14 +86,11 @@ describe('check for user auth', () => {
   }));
 
   beforeEach(() => {
-
     fixture = TestBed.createComponent(DeveloperDetailComponent);
     component = fixture.componentInstance;
-
     de = fixture.debugElement.query(By.css('h2'));
     el = de.nativeElement;
     fixture.detectChanges();
-
     it('compare current title and user name', () => {
       expect(el.textContent).toContain('welcome');
     });

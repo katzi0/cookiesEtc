@@ -25,7 +25,7 @@ xdescribe('DevelopersComponent', () => {
   let component: DevelopersComponent;
   let fixture: ComponentFixture<DevelopersComponent>;
 
-  let developerService : DeveloperServiceStub;
+  let developerService: DeveloperServiceStub;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -49,7 +49,7 @@ xdescribe('DevelopersComponent', () => {
     spyOn(developerService,'getDeveloper');
     developerService.getDeveloper(1);
     // fixture.detectChanges();
-  });
+  }));
 
   it('should invoke getDeveloper func', () => {
      expect(developerService.getDeveloper(1)).toHaveBeenCalled();

@@ -5,8 +5,6 @@ import {DeveloperState} from '../store/developer/developer.reducer';
 @Injectable()
 export class MesseagesService {
   messages: Message[] = [];
-  // msg: Message = {title: 'none'};
-
 
   add(message: string) {
     const msg: Message = {title: message};

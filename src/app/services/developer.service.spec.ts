@@ -4,9 +4,9 @@ import {DeveloperService} from './developer.service';
 import {MesseagesService} from './messeages.service';
 import {DEVELOPERS} from '../mocks/mock-developers';
 
-fdescribe('DeveloperService', () => {
+describe('DeveloperService', () => {
   let service: DeveloperService;
-  let mockDeveloper = {
+  const mockDeveloper = {
     id: 1,
     name: 'Shai',
     location:
@@ -16,21 +16,22 @@ fdescribe('DeveloperService', () => {
         latitude: 48.856614
       }
   };
-  let developersListLength = DEVELOPERS.length;
+
+  const developersListLength = DEVELOPERS.length;
+  service = new DeveloperService(new MesseagesService());
 
   it('get developers observable value', (done: DoneFn) => {
-    service = new DeveloperService(new MesseagesService());
     service.getDeveloper(1).subscribe(value => {
       expect(value.name).toBe(mockDeveloper.name);
       done();
     });
   });
   it('get developers list length observable value', (done: DoneFn) => {
-    service = new DeveloperService(new MesseagesService());
+    // service = new DeveloperService(new MesseagesService());
     service.getDevelopers().subscribe(value => {
       expect(value.length).toBe(developersListLength);
       expect(value.length).not.toBe(developersListLength - 1);
       done();
     });
   });
-}
+});
