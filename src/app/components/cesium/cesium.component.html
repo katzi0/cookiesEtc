@@ -3,4 +3,5 @@
   </span>
 </button>
 <!--<button type="button" (click)="flyTo()">Go To location</button>-->
-<div #cesiumContainer class="cesium-container"></div>
+<div class="cesium-container"  [ngStyle]="{'display':beforeMapTriggerd}"></div>
+<div [ngStyle]="{'display':isMapTriggerd}" #cesiumContainer class="cesium-container"></div>

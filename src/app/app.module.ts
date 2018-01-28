@@ -13,7 +13,7 @@ import { AppRoutingModule } from './/app-routing.module';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
-import { InMemoryDataService }  from './services/in-memory-data.service';
+import { InMemoryDataService } from './services/in-memory-data.service';
 import { DeveloperSearchComponent } from './components/developer-search/developer-search.component';
 import { HeaderNavComponent } from './components/header-nav/header-nav.component';
 import { DeveloperLocationComponent } from './components/developer-location/developer-location.component';
@@ -25,7 +25,7 @@ import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import {DeveloperEffects} from './store/developer/developer.effects';
 import {DeveloperReducer} from './store/developer/developer.reducer';
-import { DeveloperItemComponent } from './components/developer-item/developer-item.component';
+// import { DeveloperItemComponent } from './components/developer-item/developer-item.component';
 
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import {MessageReducer} from './store/messages/message.reducer';
@@ -42,16 +42,13 @@ import {MessageReducer} from './store/messages/message.reducer';
     HeaderNavComponent,
     DeveloperLocationComponent,
     CesiumComponent,
-    WeatherWidgetComponent,
-    DeveloperItemComponent
+    WeatherWidgetComponent
+    // DeveloperItemComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpClientModule,
-    // HttpClientInMemoryWebApiModule.forRoot(
-    //   InMemoryDataService, { dataEncapsulation: false }
-    // ),
     AppRoutingModule,
     StoreModule.forRoot({
       developers: DeveloperReducer,
@@ -65,6 +62,7 @@ import {MessageReducer} from './store/messages/message.reducer';
     // StoreDevtoolsModule.instrumentOnlyWithExtension({maxAge: 5})
 
   ],
+  entryComponents: [CesiumComponent],
   providers: [DeveloperService, MesseagesService, WeatherService],
   bootstrap: [AppComponent]
 })

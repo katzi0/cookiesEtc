@@ -16,11 +16,13 @@ export class DeveloperService {
     this.log(`getDevelopers`);
     return of(DEVELOPERS);
   }
+  getDevelopersDashboard() {
+    this.log(`getDevelopersDashboard`);
+    return of(DEVELOPERS);
+  }
 
   getDeveloper(id: number): Observable<Developer> {
-    return of(DEVELOPERS.find(developer => developer.id === id))
-      .pipe(
-        tap(_ => this.log(`updated developer id = ${id}`)));
+    return of(DEVELOPERS.find(developer => developer.id === id));
   }
 
   updateDeveloper(developer: Developer): Observable<any> {
@@ -54,7 +56,7 @@ export class DeveloperService {
     return of(arr);
   }
 
-  private log(message: string) {
+  log(message: string) {
     this.messeagesService.add('DeveloperService' + message);
   }
 

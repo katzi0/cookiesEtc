@@ -17,7 +17,8 @@ export const UPDATE_DEVELOPERS = '[Developers] Update books';
 export const LOAD_DEVELOPERS_ERROR = '[Developers] Fetch error';
 export const ADD_DEVELOPER = '[Developers] Add';
 export const ADD_DEVELOPER_SUCCESS = '[Developers] Add Success';
-
+export const LOAD_DEVELOPER_DASHBOARD = '[Developers] Get For Dashboard';
+export const LOAD_DEVELOPER = '[Developers] Get Specific Developer';
 
 export class LoadDevelopers implements Action {
   public type: string;
@@ -79,4 +80,27 @@ export class LoadDevelopersError implements Action {
   }
 }
 
-export type All = LoadDevelopers | AddDeveloper | FetchDevelopersFromApi | LoadDevelopersSuccess | LoadDevelopersError | UpdateDevelopers;
+export class LoadDevelopersForDashboard implements Action {
+  public type: string;
+  public payload: any;
+
+  constructor() {
+    this.type = LOAD_DEVELOPER_DASHBOARD;
+    this.payload = null;
+  }
+}
+
+export class LoadDeveloper implements Action {
+  public type: string;
+  public payload: any;
+
+  constructor() {
+    this.type = LOAD_DEVELOPER;
+    this.payload = null;
+  }
+}
+
+export type All =
+                  LoadDevelopers | AddDeveloper | FetchDevelopersFromApi |
+                  LoadDevelopersSuccess | LoadDevelopersError | UpdateDevelopers | LoadDevelopersForDashboard |
+                  LoadDeveloper;

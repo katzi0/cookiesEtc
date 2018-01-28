@@ -1,4 +1,4 @@
-import {AfterViewInit, Component, ElementRef, OnInit, ViewChild} from '@angular/core';
+import {AfterViewInit, Component, ElementRef, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import 'cesium/Build/Cesium/Cesium.js';
 import {OfficeLocation} from '../../models/office.location';
 import {DeveloperService} from '../../services/developer.service';
@@ -13,7 +13,9 @@ import {Developer} from '../../models/developr.model';
   providers: [DeveloperService]
   // styleUrls: ['../../assets/Cesium_tmp/Widgets/CesiumWidget/CesiumWidget.css']
 })
-export class CesiumComponent implements OnInit, AfterViewInit {
+export class CesiumComponent implements OnInit, AfterViewInit, OnDestroy {
+  isMapTriggerd = 'none';
+  beforeMapTriggerd = 'block';
   developer: Developer;
   location: OfficeLocation;
   @ViewChild('cesiumContainer') cesiumContainer: ElementRef;
@@ -51,6 +53,8 @@ export class CesiumComponent implements OnInit, AfterViewInit {
     // this.layers = this.cesiumViewer.scene.imageryLayers;
   }
   markLocation() {
+    this.isMapTriggerd = 'block';
+    this.beforeMapTriggerd = 'none';
     // Cesium.buildModuleUrl('../Assets/Cesium/Assets/Textures/maki/grocery.png');
     this.cesiumViewer.entities.add({
       name: 'test',
@@ -67,4 +71,9 @@ export class CesiumComponent implements OnInit, AfterViewInit {
       destination : Cesium.Cartesian3.fromDegrees(this.developer.location.longitude, this.developer.location.latitude, 100000.0),
    });
   }
+
+  ngOnDestroy() {
+    this.isMapTriggerd = 'none';
+  }
+
 }

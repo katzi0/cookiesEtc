@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {Developer} from '../../models/developr.model';
 import {DeveloperService} from '../../services/developer.service';
 import {MesseagesService} from '../../services/messeages.service';
@@ -12,6 +12,8 @@ import {DeveloperState} from '../../store/developer/developer.reducer';
 
 // import {selectLoading} from '../../store/loader/loader.reducer';
 
+import {takeUntil} from 'rxjs/operators';
+import {Subject} from 'rxjs/Subject';
 
 interface AppState {
   developers: {
@@ -29,32 +31,29 @@ interface AppState {
 })
 
 
-export class DevelopersComponent implements OnInit {
+export class DevelopersComponent implements OnInit, OnDestroy {
   res: string;
   message$: Observable<any>;
   developerToAdd: Developer;
   developers: Developer[];
   developers$: Observable<Developer[]>;
-
+  unsubscribe: Subject<any> = new Subject<any>();
 
   constructor(private developerService: DeveloperService,
-                private messeagesService: MesseagesService,
+              private messeagesService: MesseagesService,
               private store: Store<AppState>) {
     this.message$ = this.store.select('developers');
     this.message$.subscribe(x => {
       this.res = x.status,
-     console.log(x);
+        console.log(x);
     });
   }
 
   ngOnInit() {
-
-    // this.developerListState$ = this.store.select(state => state.developers);
-    this.store.dispatch(new DeveloperAction.LoadDevelopers());
-    // this.showLoader = this.store.select(state => (state.showLoader,console.log(state)));
-
     this.developerService.getDevelopers()
+      .pipe(takeUntil(this.unsubscribe))
       .subscribe(developers => this.developers = developers);
+    this.store.dispatch(new DeveloperAction.LoadDevelopers());
   }
 
   add(developerName: string) {
@@ -81,6 +80,11 @@ export class DevelopersComponent implements OnInit {
     this.developers = this.developers.filter(dev => dev !== developer);
     this.developerService.deleteDeveloper(developer)
       .subscribe();
+  }
+
+  ngOnDestroy() {
+    this.unsubscribe.next();
+    this.unsubscribe.complete();
   }
 
 }
