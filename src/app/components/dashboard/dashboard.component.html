@@ -1,6 +1,6 @@
 <div class="content" id="dashboard">
 <h3>Top Developer</h3>
-  <a *ngFor="let developer of developers" class="developer-link col-1-4"
+  <a *ngFor="let developer of developersObservable | async" class="developer-link col-1-4"
   routerLink="/detail/{{developer.id}}">
     <div class="developer-box">
       <span>{{developer.name}}</span>

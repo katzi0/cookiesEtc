@@ -1,3 +1,5 @@
+
+
 <div class='header' id="header-navbar">
   <!--<div class="header-panel">-->
   <!--</div>-->
@@ -8,4 +10,5 @@
     <button type="button"><a routerLink="/developers">Developers</a></button>
     <button type="button"><a routerLink="/dashboard">dashboard</a></button>
   </nav>
+  <loader *ngIf="loaderState|async"></loader>
 </div>

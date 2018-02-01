@@ -5,24 +5,54 @@ import {Observable} from 'rxjs/observable';
 import {catchError, map, tap} from 'rxjs/operators';
 import {of} from 'rxjs/observable/of';
 import {MesseagesService} from './messeages.service';
+import {HttpClient} from '@angular/common/http';
+import {HttpHeaders} from '@angular/common/http';
+
 
 @Injectable()
 export class DeveloperService {
   private developersUrl = 'api/heroes';
+  private developersApi = 'http://localhost:3000/';
 
-  constructor(private messeagesService: MesseagesService) {}
+  constructor(private messeagesService: MesseagesService, private http: HttpClient) {
+  }
 
   getDevelopers() {
     this.log(`getDevelopers`);
     return of(DEVELOPERS);
   }
-  getDevelopersDashboard() {
+
+  saveDeveloperTest(developer: Developer) {
+    const header = new HttpHeaders({'Content-Type': 'application/json'});
+    const url = `${this.developersApi}${developer.id}`;
+    console.log('url:' + url);
+    // // return this.http.post()<Developer[]>(this.developersApi, developer);
+    // return this.http.post<Developer>(url, developer);
+    console.log(JSON.stringify(developer));
+    this.http.post(url,
+      JSON.stringify(developer), {'headers': header}
+    )
+      .subscribe(
+        res => console.log(res),
+        err => {
+          console.log('Error occured');
+        }
+      );
+  }
+
+
+  getDevelopersDashboard(): Observable<Developer[]> {
     this.log(`getDevelopersDashboard`);
-    return of(DEVELOPERS);
+    const url = `${this.developersApi}`;
+    return this.http.get<Developer[]>(url);
+    // return of(DEVELOPERS);
   }
 
   getDeveloper(id: number): Observable<Developer> {
-    return of(DEVELOPERS.find(developer => developer.id === id));
+    const url = `${this.developersApi}${id}`;
+
+    return this.http.get<Developer>(url);
+    // return of(DEVELOPERS.find(developer => developer.id === id));
   }
 
   updateDeveloper(developer: Developer): Observable<any> {
@@ -79,6 +109,7 @@ export class DeveloperService {
       return of(result as T);
     };
   }
+
 
   /**
    OLD IMPLEMENTATION, used in-memory-data.service.ts

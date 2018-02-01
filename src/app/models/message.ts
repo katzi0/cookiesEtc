@@ -5,3 +5,4 @@ export interface Message {
 export const mockMessage = {
   title: 'mock log msg'
 }
+

@@ -5,7 +5,7 @@ export type Action = LoaderActions.LoaderActions;
 
 
 export interface LoaderState {
-  showLoader: boolean;
+  showLoader: Boolean;
 }
 
 
@@ -19,7 +19,3 @@ export function LoaderReducer(state = initState, action: Action) {
       return {...state, showLoader: action.payload};
   }
 }
-//
-// export const LoaderState = (state) => state.loader;
-//
-// export const selectLoading = createSelector(LoaderState, (state) => state.);

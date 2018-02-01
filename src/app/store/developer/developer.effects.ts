@@ -16,6 +16,7 @@ import {HttpClient} from '@angular/common/http';
 import {LoaderActions, ToggleLoader} from '../loader/loader.action';
 import {MesseagesService} from '../../services/messeages.service';
 import {LoadMessages} from '../messages/messages.action';
+import {LoadDevelopers, LoadDevelopersSuccess} from './developer.action';
 
 @Injectable()
 export class DeveloperEffects {
@@ -38,17 +39,26 @@ export class DeveloperEffects {
     .ofType(DeveloperActions.LOAD_DEVELOPER_DASHBOARD)
     .mergeMap(() => of(this.messeagesService.messages))
     .map(res => new LoadMessages(res));
-
   @Effect()
   loadDevelopers = this.actions$
     .ofType(DeveloperActions.LOAD_DEVELOPERS)
-    .mergeMap(() => of(this.messeagesService.messages))
-    .map(res => new LoadMessages(res));
+    .flatMap(() => [
+      new ToggleLoader(true),
+      new LoadDevelopersSuccess()
+    ])
+    // .flatMap(() => new ToggleLoader(true));
   @Effect()
   loadDeveloper = this.actions$
     .ofType(DeveloperActions.LOAD_DEVELOPER)
     .mergeMap(() => of(this.messeagesService.messages))
     .map(res => new LoadMessages(res));
+  @Effect()
+  fetchDevelopers = this.actions$
+    .ofType(DeveloperActions.LOAD_DEVELOPERS_SUCCESS)
+    .mergeMap(() => of(this.messeagesService.messages))
+    .map((res => new LoadMessages(res)));
+
+
 }
 
 

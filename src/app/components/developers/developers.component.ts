@@ -32,6 +32,7 @@ interface AppState {
 
 
 export class DevelopersComponent implements OnInit, OnDestroy {
+  showLoader: Boolean = false;
   res: string;
   message$: Observable<any>;
   developerToAdd: Developer;
@@ -45,7 +46,8 @@ export class DevelopersComponent implements OnInit, OnDestroy {
     this.message$ = this.store.select('developers');
     this.message$.subscribe(x => {
       this.res = x.status,
-        console.log(x);
+        console.log(x),
+        this.showLoader = x.showLoader;
     });
   }
 

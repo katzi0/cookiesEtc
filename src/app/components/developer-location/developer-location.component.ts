@@ -34,6 +34,7 @@ export class DeveloperLocationComponent implements OnInit, OnDestroy {
       .subscribe(developer => this.developer = developer);
     this.createCesiumMapComponent();
   }
+
   createCesiumMapComponent() {
     this.container.clear();
     const factory: ComponentFactory<any> = this.resolver.resolveComponentFactory(CesiumComponent);

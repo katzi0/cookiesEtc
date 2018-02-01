@@ -8,6 +8,7 @@ import {Subject} from 'rxjs/Subject';
 import {Store} from '@ngrx/store';
 
 import * as DeveloperAction from '../../store/developer/developer.action';
+import {Observable} from 'rxjs/Observable';
 
 interface AppState {
   developers: {
@@ -25,9 +26,10 @@ interface AppState {
 })
 
 export class DeveloperDetailComponent implements OnInit, OnDestroy {
-  @Input() developer: Developer;
+  developer: Developer;
   welcomeMsg = '--not initalized yet--';
   unsubscribe: Subject<any> = new Subject<any>();
+  developerObs: Observable<Developer>;
 
   constructor(private route: ActivatedRoute,
               private developerService: DeveloperService,
@@ -43,12 +45,17 @@ export class DeveloperDetailComponent implements OnInit, OnDestroy {
 
   getDeveloper() {
     const id = +this.route.snapshot.paramMap.get('id');
-    this.developerService.getDeveloper(id)
+    this.developerObs = this.developerService.getDeveloper(id);
+    this.developerObs
       .pipe(
         takeUntil(this.unsubscribe),
         tap(_ => this.developerService.log(`updated developer id = ${id}`))
       )
-      .subscribe(developer => this.developer = developer);
+      .subscribe(developer => {
+        this.developer = developer,
+          this.welcomeMsg = `Welcome ${this.developer.name}`,
+          console.log(this.developer);
+      });
     this.getCurrectUrl();
     this.store.dispatch(new DeveloperAction.LoadDeveloper());
   }
@@ -69,5 +76,12 @@ export class DeveloperDetailComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
     this.unsubscribe.next();
     this.unsubscribe.complete();
+  }
+
+  updateDataTest() {
+    console.log(this.developer.name)
+    this.developerService.saveDeveloperTest(this.developer);
+
+    // this.developerService.saveDeveloperTest(this.developer).subscribe(x => console.log(x));
   }
 }

@@ -54,9 +54,9 @@ export class LoadDevelopersSuccess implements Action {
   public type: string;
   public payload: any;
 
-  constructor(payload: any) {
-    // this.type = developerActionTypes.LoadDevelopersSuccess;
-    this.payload = payload;
+  constructor() {
+    this.type = LOAD_DEVELOPERS_SUCCESS
+    // this.payload = true;
   }
 }
 

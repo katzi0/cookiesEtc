@@ -5,12 +5,12 @@ import * as DeveloperActions from './developer.action';
 export type Action = DeveloperActions.All;
 
 export interface DeveloperState {
-  showLoader: boolean;
+  // showLoader: boolean;
   status: string;
 }
 
 const initState: DeveloperState = {
-  showLoader: true,
+  // showLoader: true,
   status: 'none'
 };
 
@@ -33,10 +33,10 @@ export function DeveloperReducer(state = initState, action: Action) {
     //   };
 
     case DeveloperActions.LOAD_DEVELOPERS_SUCCESS:
-      return {...state, loading: false};
+      return {...state};
 
     case DeveloperActions.ADD_DEVELOPER:
-      return {...state, loading: false};
+      return {...state};
 
     default:
       return state;
